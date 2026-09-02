@@ -1,7 +1,7 @@
 // Datas principais: altere aqui se a data de referência ou a previsão mudarem.
-const REFERENCE_DATE = new Date(2026, 8, 2, 0, 0, 0);
-const DUE_DATE = new Date(2027, 3, 16, 0, 0, 0);
-const INITIAL_GESTATIONAL_DAYS = (7 * 7) + 5;
+const REFERENCE_DATE = new Date(2026, 5, 26, 0, 0, 0);
+const DUE_DATE = new Date(2027, 0, 28, 0, 0, 0);
+const INITIAL_GESTATIONAL_DAYS = (9 * 7) + 1;
 const TOTAL_GESTATIONAL_DAYS = 40 * 7;
 const STORAGE_KEY = "diario-gravidez-mensagens";
 const THEME_KEY = "diario-gravidez-tema";
@@ -9,14 +9,6 @@ const GALLERY_STORAGE_KEY = "diario-gravidez-galeria-links";
 
 // Textos da linha do tempo: edite títulos e descrições aqui.
 const weekTexts = {
-  7: {
-    title: "Um segredo lindo crescendo",
-    description: "Nesta fase, nosso bebê ainda é bem pequenininho, mas já transforma os dias da mamãe Amanda e do papai Gefferson com amor e expectativa."
-  },
-  8: {
-    title: "Pequeno amor em desenvolvimento",
-    description: "O bebê continua crescendo com delicadeza, e cada semana deixa essa espera mais real, mais bonita e mais cheia de carinho."
-  },
   9: {
     title: "Nosso bebê começa a ganhar forma",
     description: "Nesta fase, nosso bebê está crescendo rapidamente e começando a ter traços mais definidos. Cada dia é uma nova descoberta nessa linda jornada."
@@ -150,8 +142,6 @@ const weekTexts = {
 // Comparações visuais aproximadas para o diário familiar.
 // Edite "comparison", "size" e "note" se quiser usar outra referência carinhosa.
 const weekGrowth = {
-  7: { comparison: "um mirtilo", size: "cerca de 1 cm", note: "O bebê é bem pequenininho, como um mirtilo, mas já carrega um amor enorme para Amanda e Gefferson." },
-  8: { comparison: "uma framboesa", size: "cerca de 1,6 cm", note: "Mesmo tão pequeno, o bebê segue crescendo todos os dias dentro da barriga da mamãe." },
   9: { comparison: "um feijãozinho", size: "cerca de 2,3 cm", note: "O bebê ainda é bem pequeno, mas cresce rápido e começa a parecer cada vez mais com um bebê." },
   10: { comparison: "uma uva pequena", size: "cerca de 3,1 cm", note: "Os detalhes ficam mais delicados, e essa sementinha de amor continua ganhando forma." },
   11: { comparison: "um figo pequeno", size: "cerca de 4,1 cm", note: "A cada dia, o bebê se desenvolve com calma, protegido e cercado de carinho." },
@@ -159,11 +149,11 @@ const weekGrowth = {
   13: { comparison: "um pêssego", size: "cerca de 7,4 cm", note: "O corpinho começa a ficar mais proporcional e os movimentos ficam cada vez mais especiais." },
   14: { comparison: "um limão siciliano", size: "cerca de 8,7 cm", note: "O bebê cresce com energia, enquanto a espera ganha novos sonhos e planos." },
   15: { comparison: "uma maçã pequena", size: "cerca de 10,1 cm", note: "Os traços continuam se formando, e o amor da mamãe e do papai cresce junto." },
-  16: { comparison: "um abacate pequeno", size: "cerca de 11,6 cm", note: "A presença do bebê fica cada vez mais real dentro da barriga da mamãe Amanda." },
+  16: { comparison: "um abacate pequeno", size: "cerca de 11,6 cm", note: "A presença do bebê fica cada vez mais real dentro da barriga da mamãe Julianne." },
   17: { comparison: "uma pera", size: "cerca de 13 cm", note: "O bebê ganha força aos poucos, e a família imagina cada movimento com ternura." },
   18: { comparison: "uma batata-doce pequena", size: "cerca de 14,2 cm", note: "Cada detalhe dessa fase vira memória antes mesmo do primeiro abraço." },
   19: { comparison: "uma manga", size: "cerca de 15,3 cm", note: "O crescimento segue bonito, trazendo uma mistura gostosa de ansiedade e gratidão." },
-  20: { comparison: "uma banana pequena", size: "cerca de 16,4 cm", note: "Metade da caminhada chega como uma celebração para Amanda e Gefferson." },
+  20: { comparison: "uma banana pequena", size: "cerca de 16,4 cm", note: "Metade da caminhada chega como uma celebração para Julianne e Juander." },
   21: { comparison: "uma cenoura", size: "cerca de 26,7 cm", note: "Daqui em diante, a comparação considera o bebê mais esticadinho, da cabeça aos pés." },
   22: { comparison: "um mamão pequeno", size: "cerca de 27,8 cm", note: "O bebê continua crescendo, e a casa já começa a imaginar sua chegada." },
   23: { comparison: "uma berinjela pequena", size: "cerca de 28,9 cm", note: "A jornada fica mais viva, com novos registros e sonhos para guardar." },
@@ -279,7 +269,7 @@ function getGestationalDays(date = new Date()) {
 
 function getCurrentWeek(date = new Date()) {
   const week = Math.floor(getGestationalDays(date) / 7);
-  return Math.min(40, Math.max(7, week));
+  return Math.min(40, Math.max(9, week));
 }
 
 function formatGestationalAge(days) {
@@ -317,13 +307,13 @@ function updateCountdown() {
 }
 
 function getGrowthScale(week) {
-  return 0.46 + ((week - 7) / 33) * 1.34;
+  return 0.55 + ((week - 9) / 31) * 1.25;
 }
 
 function renderGrowthOptions() {
   const fragment = document.createDocumentFragment();
 
-  for (let week = 7; week <= 40; week += 1) {
+  for (let week = 9; week <= 40; week += 1) {
     const option = document.createElement("option");
     option.value = String(week);
     option.textContent = `Semana ${week}`;
@@ -334,10 +324,10 @@ function renderGrowthOptions() {
 }
 
 function updateGrowthScene(week) {
-  const safeWeek = Math.min(40, Math.max(7, Number(week)));
+  const safeWeek = Math.min(40, Math.max(9, Number(week)));
   const data = weekGrowth[safeWeek];
   const scale = getGrowthScale(safeWeek);
-  const hue = 330 - ((safeWeek - 7) * 2.15);
+  const hue = 330 - ((safeWeek - 9) * 2.3);
 
   growthWeekCursor = safeWeek;
   selectors.growthWeekLabel.textContent = `Semana ${safeWeek}`;
@@ -353,7 +343,7 @@ function updateGrowthScene(week) {
 
 function stepGrowthScene(direction = 1) {
   const nextWeek = growthWeekCursor + direction;
-  updateGrowthScene(nextWeek > 40 ? 7 : nextWeek < 7 ? 40 : nextWeek);
+  updateGrowthScene(nextWeek > 40 ? 9 : nextWeek < 9 ? 40 : nextWeek);
 }
 
 function getWeekAssetPath(folder, week, extension) {
@@ -382,7 +372,7 @@ function renderTimeline() {
   const currentWeek = getCurrentWeek();
   const fragment = document.createDocumentFragment();
 
-  for (let week = 7; week <= 40; week += 1) {
+  for (let week = 9; week <= 40; week += 1) {
     const item = weekTexts[week];
     const growth = weekGrowth[week];
     const card = document.createElement("article");
@@ -393,7 +383,7 @@ function renderTimeline() {
       <div class="week-dot" aria-hidden="true">${week}</div>
       <div class="timeline-body">
         <div class="timeline-topline">
-          <span class="week-label">Semana ${week}${week === 7 ? " • início com 7 semanas e 5 dias" : ""}</span>
+          <span class="week-label">Semana ${week}${week === 9 ? " • início com 9 semanas e 1 dia" : ""}</span>
           ${week === currentWeek ? '<span class="current-badge">Fase atual</span>' : ""}
         </div>
         <h3>${item.title}</h3>
@@ -610,14 +600,14 @@ function deleteMessage(id) {
 }
 
 function scrollToNextWeek() {
-  const current = Math.min(40, Math.max(7, nextWeekCursor));
+  const current = Math.min(40, Math.max(9, nextWeekCursor));
   const target = document.querySelector(`#semana-${current}`);
 
   if (target) {
     target.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 
-  nextWeekCursor = current >= 40 ? 7 : current + 1;
+  nextWeekCursor = current >= 40 ? 9 : current + 1;
 }
 
 function applyTheme(theme) {
