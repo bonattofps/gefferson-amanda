@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Diário da Gravidez da Amanda e do Gefferson: uma jornada familiar semana a semana até a chegada do bebê.">
+  <title>Diário da Gravidez</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23eef8ef'/%3E%3Cpath d='M32 51S13 39 13 24c0-7 5-12 12-12 4 0 7 2 7 5 0-3 3-5 7-5 7 0 12 5 12 12 0 15-19 27-19 27Z' fill='%233f9f63'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="soft-hearts" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <header class="site-header" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Voltar ao início">
+      <span class="brand-mark">D</span>
+      <span>Diário da Gravidez</span>
+    </a>
+
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#inicio" data-view-target="home">Início</a>
+      <a href="#linha-do-tempo" data-view-target="weeks">Semanas</a>
+      <a href="#momentos" data-view-target="moments">Momentos</a>
+      <a href="#mensagens" data-view-target="messages">Mensagens</a>
+    </nav>
+
+    <button class="theme-toggle" type="button" aria-label="Alternar tema claro ou escuro">
+      <span class="theme-icon" aria-hidden="true">☾</span>
+      <span class="theme-label">Tema</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero section-band" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">7 semanas e 5 dias em 02/09/2026</p>
+        <h1 id="hero-title">Diário da Gravidez</h1>
+        <p class="hero-subtitle">Acompanhe com a mamãe Amanda e o papai Gefferson cada fase dessa linda jornada até a chegada do nosso bebê.</p>
+
+        <div class="hero-actions" aria-label="Ações principais">
+          <button class="primary-action" type="button" data-view-target="weeks">Ver semanas</button>
+          <button class="secondary-action" type="button" data-scroll-target="#inicio">Voltar ao início</button>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Ilustração delicada de uma família aguardando o bebê">
+        <div class="moon"></div>
+        <div class="family-silhouette">
+          <div class="person person-left"></div>
+          <div class="person person-right"></div>
+          <div class="baby-glow"></div>
+        </div>
+        <div class="floating-heart heart-one">♥</div>
+        <div class="floating-heart heart-two">♥</div>
+      </div>
+    </section>
+
+    <section class="status-panel section-content" aria-label="Resumo da gravidez">
+      <article class="today-card reveal">
+        <span class="card-kicker">Hoje</span>
+        <h2>Estamos com <strong id="current-age-text">7 semanas e 5 dias</strong> de gravidez.</h2>
+        <p>Cada dia aproxima nossa família do primeiro abraço mais esperado.</p>
+      </article>
+
+      <article class="countdown-card reveal" aria-labelledby="countdown-title">
+        <div>
+          <span class="card-kicker">Chegada prevista</span>
+          <h2 id="countdown-title">16/04/2027</h2>
+        </div>
+
+        <div class="countdown" aria-live="polite">
+          <div>
+            <strong id="days">0</strong>
+            <span>Dias</span>
+          </div>
+          <div>
+            <strong id="hours">0</strong>
+            <span>Horas</span>
+          </div>
+          <div>
+            <strong id="minutes">0</strong>
+            <span>Minutos</span>
+          </div>
+          <div>
+            <strong id="seconds">0</strong>
+            <span>Segundos</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="progress-card reveal" aria-labelledby="progress-title">
+        <div class="progress-heading">
+          <div>
+            <span class="card-kicker">Progresso</span>
+            <h2 id="progress-title">Nossa caminhada até 40 semanas</h2>
+          </div>
+          <strong id="progress-percent">0%</strong>
+        </div>
+
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="pregnancy-progress"></div>
+        </div>
+        <p id="progress-copy">Calculando com carinho...</p>
+      </article>
+    </section>
+
+    <section class="baby-now section-band view-panel view-hidden" data-view-panel="weeks" id="agora" aria-labelledby="baby-now-title">
+      <div class="section-heading">
+        <span class="eyebrow">Como o bebê está agora</span>
+        <h2 id="baby-now-title">Um pequeno universo crescendo com amor</h2>
+        <p>Uma ilustração simples e carinhosa para representar esse comecinho cheio de vida dentro da barriga da mamãe Amanda.</p>
+      </div>
+
+      <div class="belly-scene reveal" aria-label="Ilustração animada de barriga com bebê">
+        <div class="sparkle sparkle-one"></div>
+        <div class="sparkle sparkle-two"></div>
+        <div class="sparkle sparkle-three"></div>
+        <div class="belly">
+          <div class="baby">
+            <span class="baby-head"></span>
+            <span class="baby-body"></span>
+            <span class="baby-heart">♥</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="growth-video section-content view-panel view-hidden" data-view-panel="weeks" id="crescimento" aria-labelledby="growth-video-title">
+      <div class="section-heading">
+        <span class="eyebrow">Crescimento animado</span>
+        <h2 id="growth-video-title">Como o bebê está dentro da barriga da mamãe</h2>
+        <p>Uma animação lúdica, semana a semana, com comparações simples de tamanho para a família acompanhar essa espera.</p>
+      </div>
+
+      <div class="growth-player reveal">
+        <div class="growth-stage" aria-live="polite">
+          <div class="womb-video" aria-label="Vídeo animado da barriga da mamãe por semana">
+            <div class="womb-glow"></div>
+            <div class="growth-baby" id="growth-baby">
+              <span class="growth-head"></span>
+              <span class="growth-body"></span>
+              <span class="growth-heart"></span>
+            </div>
+            <div class="growth-object" id="growth-object"></div>
+          </div>
+        </div>
+
+        <div class="growth-copy">
+          <span class="week-label" id="growth-week-label">Semana 9</span>
+          <h3 id="growth-comparison">Tamanho de um feijãozinho</h3>
+          <p id="growth-size">Cerca de 2,3 cm.</p>
+          <p id="growth-description">O bebê ainda é bem pequeno, mas já cresce rápido e começa a parecer cada vez mais com um bebê.</p>
+
+          <div class="growth-controls" aria-label="Controles da animação semana a semana">
+            <button class="secondary-action" id="growth-prev" type="button">Semana anterior</button>
+            <select id="growth-week-select" aria-label="Escolher semana da gravidez"></select>
+            <button class="secondary-action" id="growth-next" type="button">Próxima semana</button>
+            <button class="primary-action" id="growth-play" type="button">Pausar animação</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section section-content view-panel view-hidden" data-view-panel="weeks" id="linha-do-tempo" aria-labelledby="timeline-title">
+      <div class="section-heading">
+        <span class="eyebrow">Semana a semana</span>
+        <h2 id="timeline-title">Linha do tempo da gravidez</h2>
+        <p>Da semana 7 até a semana 40, cada fase ganha um cantinho especial para memórias, fotos e vídeos.</p>
+      </div>
+
+      <div class="timeline-actions">
+        <button class="primary-action" id="next-week-button" type="button">Ver próxima fase</button>
+      </div>
+
+      <div class="timeline" id="timeline" aria-live="polite"></div>
+    </section>
+
+    <section class="gallery-section section-band view-panel view-hidden" data-view-panel="moments" id="momentos" aria-labelledby="gallery-title">
+      <div class="section-heading">
+        <span class="eyebrow">Nossos Momentos</span>
+        <h2 id="gallery-title">Memórias para guardar para sempre</h2>
+        <p>Cole links de imagens para personalizar os cards com fotos da barriga, ultrassons e momentos em família.</p>
+      </div>
+
+      <form class="gallery-link-form reveal" id="gallery-link-form">
+        <label for="gallery-image-url">Link da imagem</label>
+        <input id="gallery-image-url" type="url" placeholder="https://exemplo.com/foto.jpg" required>
+
+        <label for="gallery-category">Onde colocar</label>
+        <select id="gallery-category" required></select>
+
+        <label for="gallery-title-input">Título da foto</label>
+        <input id="gallery-title-input" type="text" maxlength="60" placeholder="Ex.: Primeiro ultrassom">
+
+        <button class="primary-action" type="submit">Salvar imagem</button>
+      </form>
+
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </section>
+
+    <section class="videos-section section-content view-panel view-hidden" data-view-panel="moments" id="videos" aria-labelledby="videos-title">
+      <div class="section-heading">
+        <span class="eyebrow">Vídeos da Nossa Jornada</span>
+        <h2 id="videos-title">Pequenos registros, grandes lembranças</h2>
+        <p>Troque os arquivos de exemplo pelos vídeos da família dentro da pasta <code>assets/videos</code>.</p>
+      </div>
+
+      <div class="video-grid">
+        <article class="video-card reveal">
+          <div class="video-shell">
+            <video controls preload="metadata" aria-label="Vídeo da primeira lembrança">
+            <!-- Para adicionar um vídeo, insira aqui:
+            <source src="assets/videos/primeiro-registro.mp4" type="video/mp4">
+            -->
+            Seu navegador não suporta vídeo HTML5.
+            </video>
+            <span>Adicionar vídeo</span>
+          </div>
+          <h3>Primeiro registro</h3>
+          <p>Um espaço para guardar aquele momento que fez o coração bater mais forte.</p>
+        </article>
+
+        <article class="video-card reveal">
+          <div class="video-shell">
+            <video controls preload="metadata" aria-label="Vídeo de momento especial">
+            <!-- Para adicionar um vídeo, insira aqui:
+            <source src="assets/videos/momento-especial.mp4" type="video/mp4">
+            -->
+            Seu navegador não suporta vídeo HTML5.
+            </video>
+            <span>Adicionar vídeo</span>
+          </div>
+          <h3>Momento especial</h3>
+          <p>Um cantinho para os vídeos curtos que contam essa história com movimento e voz.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="messages-section section-band view-panel view-hidden" data-view-panel="messages" id="mensagens" aria-labelledby="messages-title">
+      <div class="section-heading">
+        <span class="eyebrow">Mensagens para o Bebê</span>
+        <h2 id="messages-title">Palavras que ficam</h2>
+        <p>Escreva recados, promessas e pequenos pensamentos para reler no futuro.</p>
+      </div>
+
+      <form class="message-form reveal" id="message-form">
+        <label for="message-input">Sua mensagem</label>
+        <textarea id="message-input" rows="5" maxlength="500" placeholder="Escreva uma mensagem cheia de carinho..." required></textarea>
+        <button class="primary-action" type="submit">Salvar mensagem</button>
+      </form>
+
+      <div class="messages-list" id="messages-list" aria-live="polite"></div>
+    </section>
+
+    <section class="closing section-content view-panel view-hidden" data-view-panel="messages" aria-labelledby="closing-title">
+      <span class="eyebrow">Nossa família te espera</span>
+      <h2 id="closing-title">Cada semana é um passo mais perto de você</h2>
+      <p>Cada semana que passa aproxima a mamãe Amanda e o papai Gefferson do momento mais esperado das nossas vidas. Estamos contando os dias para te conhecer, te abraçar e viver esse amor de perto.</p>
+      <div class="hero-actions">
+        <button class="primary-action" type="button" data-view-target="weeks">Ver semanas</button>
+        <button class="secondary-action" type="button" data-scroll-target="#inicio">Voltar ao início</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Foto ampliada">
+    <button class="lightbox-close" type="button" aria-label="Fechar imagem">×</button>
+    <div class="lightbox-content">
+      <div class="lightbox-art" id="lightbox-art"></div>
+      <img class="lightbox-image" id="lightbox-image" alt="">
+      <h3 id="lightbox-title"></h3>
+      <p id="lightbox-description"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
